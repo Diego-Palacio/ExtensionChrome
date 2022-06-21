@@ -5,5 +5,8 @@
     "manifest_version": 3,
     "background": {
       "service_worker": "codigo.js"
+    },
+    "action":{
+      "default_popup":"index.html"
     }
   }
