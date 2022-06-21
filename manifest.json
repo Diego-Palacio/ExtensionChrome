@@ -1,0 +1,6 @@
+{
+    "name": "Paginas de inicio",
+    "description": "Extencion para Chrome , para que inicien tus paginas preferias al abrir Chrome",
+    "version": "1.0",
+    "manifest_version": 3
+  }
