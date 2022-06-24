@@ -5,7 +5,9 @@ const paginas=[]
 const formulario=document.getElementById("formulario");
 const pagina=document.getElementById("otraPagina");
 const mostrarPaginas=document.getElementById("mostrarPaginas");
+
 let cardPagina=document.createElement("div")
+const formularioPaginasAgregadas= document.getElementById("paginasAgregadas");
 
 
 
@@ -44,10 +46,18 @@ formulario.addEventListener('submit', (e)=>{
     cardPagina.innerHTML+= `<div> ${pagina.value} </div> `
     mostrarPaginas.appendChild(cardPagina);
     agregarPagina(pagina.value)     
-
-    // abrirPaginas()
 });
 
+
+
+//este evento sucede al apretar click en el boton "abrir paginas"
+//llama a la funcion abrir paginas
+formularioPaginasAgregadas.addEventListener('submit', (e)=>{
+
+    e.preventDefault()
+    abrirPaginas()
+
+})
 
 
 //Agrega nombre de pagina a array paginas y guarda paginas en local storage
