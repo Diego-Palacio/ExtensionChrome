@@ -42,7 +42,10 @@ actualizoDatos()
 //se crea un div donde como informacion se le añade el nombre de la pagina agregada por el usuario
 formulario.addEventListener('submit', (e)=>{
     e.preventDefault();
-    cardPagina.innerHTML+= `<div> ${inputPagina.value} </div> `
+    cardPagina.innerHTML+= `<div> 
+                                 ${inputPagina.value}
+                                 <button type="button" id="botonEliminar"> Eliminar </button>
+                            </div> `
     mostrarPaginas.appendChild(cardPagina);
     agregarPagina(inputPagina.value)    
     inputPagina.value="https://"
