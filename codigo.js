@@ -3,7 +3,7 @@ const paginas=[]
 
 //Se obtienen los datos de input , formulario y de mostrarPaginas que es el contenedor del div de nombre d paginas agregadas
 const formulario=document.getElementById("formulario");
-const pagina=document.getElementById("otraPagina");
+const inputPagina=document.getElementById("inputPagina");
 const mostrarPaginas=document.getElementById("mostrarPaginas");
 
 let cardPagina=document.createElement("div")
@@ -42,10 +42,10 @@ actualizoDatos()
 //se crea un div donde como informacion se le añade el nombre de la pagina agregada por el usuario
 formulario.addEventListener('submit', (e)=>{
     e.preventDefault();
-   
-    cardPagina.innerHTML+= `<div> ${pagina.value} </div> `
+    cardPagina.innerHTML+= `<div> ${inputPagina.value} </div> `
     mostrarPaginas.appendChild(cardPagina);
-    agregarPagina(pagina.value)     
+    agregarPagina(inputPagina.value)    
+    inputPagina.value="https://"
 });
 
 
