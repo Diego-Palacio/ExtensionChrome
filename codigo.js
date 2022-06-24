@@ -20,6 +20,7 @@ formulario.addEventListener('submit', (e)=>{
 
 });
 
+
 agregarPagina=(p)=>{
     paginas.push({"nombre":`${p}`})
 }
