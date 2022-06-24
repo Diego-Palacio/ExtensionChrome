@@ -18,17 +18,18 @@ formulario.addEventListener('submit', (e)=>{
 
     agregarPagina(pagina.value)
 
-
+    
     // abrirPaginas()
 
 });
 
-
+//Agrega nombre de pagina a array paginas y guarda paginas en local storage
 agregarPagina=(p)=>{
     paginas.push({"nombre":`${p}`})
     guardarPaginas()
 }
 
+//abre todas las paginas agregadas como favoritas
 abrirPaginas=()=>{
     paginas.forEach(p=>{
         const url=p.nombre;
@@ -36,10 +37,13 @@ abrirPaginas=()=>{
     })
 }
 
+//guarda las paginas en local storage
 guardarPaginas=()=>{
     localStorage.setItem("paginas",JSON.stringify(paginas));
 }
 
+//retorna si existen paginas o no en localstorage
 localStorageVacio=()=>{
     return localStorage.getItem("paginas")==null ? true : false;
 }
+
