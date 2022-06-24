@@ -16,13 +16,15 @@ formulario.addEventListener('submit', (e)=>{
     mostrarPaginas.appendChild(cardPagina);
     
     agregarPagina(pagina.value)
-    abrirPaginas()
+    // abrirPaginas()
 
 });
 
 
+
 agregarPagina=(p)=>{
     paginas.push({"nombre":`${p}`})
+    guardarPaginas()
 }
 
 abrirPaginas=()=>{
@@ -30,4 +32,8 @@ abrirPaginas=()=>{
         const url=p.nombre;
         window.open(`${url}`);
     })
+}
+
+guardarPaginas=()=>{
+    localStorage.setItem("paginas",JSON.stringify(paginas));
 }
