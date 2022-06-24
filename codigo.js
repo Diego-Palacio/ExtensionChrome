@@ -15,11 +15,13 @@ formulario.addEventListener('submit', (e)=>{
     cardPagina.innerHTML+= `<div> ${pagina.value} </div> `
     mostrarPaginas.appendChild(cardPagina);
     
+
     agregarPagina(pagina.value)
+
+
     // abrirPaginas()
 
 });
-
 
 
 agregarPagina=(p)=>{
@@ -36,4 +38,8 @@ abrirPaginas=()=>{
 
 guardarPaginas=()=>{
     localStorage.setItem("paginas",JSON.stringify(paginas));
+}
+
+localStorageVacio=()=>{
+    return localStorage.getItem("paginas")==null ? true : false;
 }
