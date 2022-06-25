@@ -1,3 +1,4 @@
+
 //Array que contendra todas las paginas
 const paginas=[]
 
@@ -5,9 +6,17 @@ const paginas=[]
 const formulario=document.getElementById("formulario");
 const inputPagina=document.getElementById("inputPagina");
 const mostrarPaginas=document.getElementById("mostrarPaginas");
+const btnEliminar=document.getElementById("btnEliminar")
 
 let cardPagina=document.createElement("div")
 const formularioPaginasAgregadas= document.getElementById("paginasAgregadas");
+
+const htmlPagina=(input)=>{  
+   return `<div> 
+             ${input}
+             <button type="button" id="${input}"> Eliminar </button>
+           </div> `
+}
 
 
 
@@ -17,35 +26,12 @@ localStorageVacio=()=>{
 }
 
 
-//funcion que se usa cada vez que se refresca la pagina
-//si hay datos en localStorage los carga de nuevo en pantalla. Asi obtengo los datos que habian sido cargados anteriormente
-actualizoDatos=()=>{
-    if(paginas.length==0 && !localStorageVacio()){
-   
-        obtenerPaginasStorage= JSON.parse(localStorage.getItem("paginas")); 
-        obtenerPaginasStorage.forEach(p=>{
-            paginas.push(p)
-        })
-    
-        paginas.forEach(p =>{
-             cardPagina.innerHTML+= `<div> ${p.nombre} </div> `
-             mostrarPaginas.appendChild(cardPagina); 
-        })
-    }
-}
-
-
-actualizoDatos()
-
 
 //este evento sucede al apretar click en el boton "añadir" o al apretar enter
 //se crea un div donde como informacion se le añade el nombre de la pagina agregada por el usuario
 formulario.addEventListener('submit', (e)=>{
     e.preventDefault();
-    cardPagina.innerHTML+= `<div> 
-                                 ${inputPagina.value}
-                                 <button type="button" id="botonEliminar"> Eliminar </button>
-                            </div> `
+    cardPagina.innerHTML+= htmlPagina(inputPagina.value)
     mostrarPaginas.appendChild(cardPagina);
     agregarPagina(inputPagina.value)    
     inputPagina.value="https://"
@@ -63,10 +49,12 @@ formularioPaginasAgregadas.addEventListener('submit', (e)=>{
 })
 
 
+
 //Agrega nombre de pagina a array paginas y guarda paginas en local storage
 agregarPagina=(p)=>{
     paginas.push({"nombre":`${p}`})
     guardarEnLocalStorage()
+    actualizoDatos()
 }
 
 
@@ -86,4 +74,54 @@ guardarEnLocalStorage=()=>{
 }
 
 
+//al hacer click en una pagina para borrarla, se setea valores a 0 y vacio. y vuelvo a 'pintar' la pagina
+borrarPaginas=()=>{
+    paginas.forEach((p,cant) =>{   
+        document.getElementById(p.nombre).addEventListener("click",()=>{         
+            paginas.splice(cant,1)   
+            localStorage.setItem("paginas",JSON.stringify(paginas))
+            paginas.length=0;
+            cardPagina.innerHTML=""
+            actualizoDatos()
+        })
+    
+    });
+}
 
+//agrega informacion del nombre de la pagina al div creado anteriormente
+agregarPaginas=()=>{
+    paginas.forEach(p =>{
+        cardPagina.innerHTML+= htmlPagina(p.nombre);
+        mostrarPaginas.appendChild(cardPagina); 
+   })
+}
+
+
+//funcion que se usa cada vez que se refresca la pagina
+//si hay datos en localStorage los carga de nuevo en pantalla. Asi obtengo los datos que habian sido cargados anteriormente
+actualizoDatos=()=>{
+
+    if(paginas.length==0 && !localStorageVacio()){
+        obtenerPaginasStorage= JSON.parse(localStorage.getItem("paginas"));
+        obtenerPaginasStorage.forEach(p=>{
+            paginas.push(p)
+        })
+              
+        agregarPaginas() 
+        borrarPaginas()
+    }
+
+    //Este else if funciona para q a la primera vez q se abra la extension igualemente pueba borrar los datos
+    //Sin esto, borraria los datos despues de refrescar la pagina ya que entraria en el if
+    else if(paginas.length>0 && !localStorageVacio()){
+        borrarPaginas()
+    }
+
+   
+}
+
+
+
+
+
+actualizoDatos()
