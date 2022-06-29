@@ -54,10 +54,25 @@ formularioPaginasAgregadas.addEventListener('submit', (e)=>{
 agregarPagina=(p)=>{
     paginas.push({"nombre":`${p}`})
     guardarEnLocalStorage()
+    nombreDeLaPagina(p)
     actualizoDatos()
 }
 
-
+//funcion que solo de vuelve el nombre de la pagina.Ejemplo www.google.com retorna "google"
+nombreDeLaPagina=(nombre)=>{
+    contadorPunto=0;
+    soloNombre=""
+      for (var i = 0; i< nombre.length; i++) {
+            letra=nombre.charAt(i)
+            if(letra=="."){
+                contadorPunto+=1;
+            }
+            if(contadorPunto==1 && letra!="."){
+                soloNombre+=nombre.charAt(i);
+            }
+         }  
+    return soloNombre;
+}
 
 //abre todas las paginas agregadas como favoritas
 abrirPaginas=()=>{
