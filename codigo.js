@@ -14,7 +14,7 @@ const formularioPaginasAgregadas= document.getElementById("paginasAgregadas");
 const htmlPagina=(input)=>{  
    return `<div> 
              ${input}
-             <button type="button" id="${input}"> Eliminar </button>
+             <button type="button" class="button" id="${input}"> Eliminar </button>
            </div> `
 }
 

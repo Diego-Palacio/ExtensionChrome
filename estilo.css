@@ -1,3 +1,9 @@
 body{
     width: 300px;
 }
+
+.button{
+    border-radius: 6px;
+    background-color: rgba(245, 50, 50, 0.605);
+    /* background-color: rgba(226, 192, 146, 0.392); */
+}
