@@ -31,7 +31,7 @@ localStorageVacio=()=>{
 //se crea un div donde como informacion se le añade el nombre de la pagina agregada por el usuario
 formulario.addEventListener('submit', (e)=>{
     e.preventDefault();
-    cardPagina.innerHTML+= htmlPagina(inputPagina.value)
+    cardPagina.innerHTML+= htmlPagina(nombreDeLaPagina(inputPagina.value))
     mostrarPaginas.appendChild(cardPagina);
     agregarPagina(inputPagina.value)    
     inputPagina.value="https://"
@@ -52,9 +52,8 @@ formularioPaginasAgregadas.addEventListener('submit', (e)=>{
 
 //Agrega nombre de pagina a array paginas y guarda paginas en local storage
 agregarPagina=(p)=>{
-    paginas.push({"nombre":`${p}`})
+    paginas.push({"nombre":nombreDeLaPagina(p),"dominio":`${p}`})
     guardarEnLocalStorage()
-    nombreDeLaPagina(p)
     actualizoDatos()
 }
 
@@ -77,7 +76,7 @@ nombreDeLaPagina=(nombre)=>{
 //abre todas las paginas agregadas como favoritas
 abrirPaginas=()=>{
     paginas.forEach(p=>{
-        const url=p.nombre;
+        const url=p.dominio;
         window.open(`${url}`);
     })
 }
