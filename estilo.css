@@ -7,3 +7,17 @@ body{
     background-color: rgba(245, 50, 50, 0.605);
     /* background-color: rgba(226, 192, 146, 0.392); */
 }
+
+.bordes{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    height: 40px;
+}
+
+#paginasAgregadas{
+    margin:10px;
+}
+
+#buttonAbrir{
+    margin:10px;
+}
