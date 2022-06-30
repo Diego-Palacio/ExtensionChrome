@@ -12,8 +12,8 @@ let cardPagina=document.createElement("div")
 const formularioPaginasAgregadas= document.getElementById("paginasAgregadas");
 
 const htmlPagina=(input)=>{  
-   return `<div class="bordes"> 
-             ${input}
+   return `<div class="pagina"> 
+              <h4>${input}</h4>
              <button type="button" class="button" id="${input}"> Eliminar </button>
            </div> `
 }

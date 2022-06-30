@@ -8,16 +8,20 @@ body{
     /* background-color: rgba(226, 192, 146, 0.392); */
 }
 
-.bordes{
-    border-top: 1px solid black;
+.pagina{
+    /* border-top: 1px solid black; */
     border-bottom: 1px solid black;
     height: 40px;
+    display: flex;
+    margin: auto 0;
+    justify-content: center;
+    align-items: center;
 }
 
-#paginasAgregadas{
+#paginasAgregadas, #buttonAbrir{
     margin:10px;
 }
 
-#buttonAbrir{
-    margin:10px;
+h4{
+    margin-right: 12px;
 }
